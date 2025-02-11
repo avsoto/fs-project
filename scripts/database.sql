@@ -28,8 +28,8 @@ INSERT INTO provinces (id_province, name) VALUES
 INSERT INTO coffee_types (id_coffee_type, type_name) VALUES
 (UUID(), 'Typica'),
 (UUID(), 'Bourbon'),
-(UUID(), 'Caturra'),
-(UUID(), 'Pache'),
+(UUID(), 'Arabica'),
+(UUID(), 'Blend'),
 (UUID(), 'Catimor'),
 (UUID(), 'Geisha'),
 (UUID(), 'Mundo Novo'),
@@ -47,15 +47,15 @@ INSERT INTO producers (id_producer, name, description, location, image, email, p
 (UUID(), 'Valle Blanco', 'En el corazón de Arequipa, Café Valle Blanco ha sido el sueño de una familia que decidió llevar el café de su tierra a los rincones más lejanos del mundo. Cada grano tiene la historia de nuestros antepasados que sembraron este sueño con esfuerzo y dedicación.', (SELECT id_province FROM provinces WHERE name = 'Cajamarca'), 'cafe_norte.jpg', 'contacto@caficultoresnorte.com', '987654123');
 
 INSERT INTO products (id_product, name, description, price, image, stock, id_producer, id_coffee_type, weight, certifications) VALUES
-(UUID(), 'La Inca Supremo', 'La Inca Supremo es nuestro orgullo. Cultivado a mano en las alturas de Cusco, este café arábico se cosecha solo durante la temporada de lluvias, cuando los granos están llenos de sabor y aroma. Cada taza cuenta la historia de nuestro abuelo quien, desde joven, nos enseñó a trabajar la tierra con cariño.', 25.00, 'cafe_cusco.jpg', 100, (SELECT id_producer FROM producers WHERE name = 'Café Andino'), (SELECT id_coffee_type FROM coffee_types WHERE type_name = 'Arabica'), 250, 'Orgánico, Comercio Justo'),
-(UUID(), 'Valle Blanco Orgánico', 'Valle Blanco Orgánico es nuestro homenaje a la tierra arequipeña. Cultivado en las laderas de los volcanes, este robusta tiene una fortaleza única, como el carácter de la gente de nuestra región. Lo sembramos con amor y cosechamos a mano, para que cada grano cuente la historia de nuestra familia.', 22.50, 'cafe_norte.jpg', 150, (SELECT id_producer FROM producers WHERE name = 'Caficultores del Norte'), (SELECT id_coffee_type FROM coffee_types WHERE type_name = 'Blend'), 500, 'Rainforest Alliance');
+(UUID(), 'La Inka Supremo', 'La Inca Supremo es nuestro orgullo. Cultivado a mano en las alturas de Cusco, este café arábico se cosecha solo durante la temporada de lluvias, cuando los granos están llenos de sabor y aroma. Cada taza cuenta la historia de nuestro abuelo quien, desde joven, nos enseñó a trabajar la tierra con cariño.', 25.00, 'cafe_cusco.jpg', 100, (SELECT id_producer FROM producers WHERE name = 'La Inka'), (SELECT id_coffee_type FROM coffee_types WHERE type_name = 'Arabica'), 250, 'Orgánico, Comercio Justo'),
+(UUID(), 'Valle Blanco Orgánico', 'Valle Blanco Orgánico es nuestro homenaje a la tierra arequipeña. Cultivado en las laderas de los volcanes, este robusta tiene una fortaleza única, como el carácter de la gente de nuestra región. Lo sembramos con amor y cosechamos a mano, para que cada grano cuente la historia de nuestra familia.', 22.50, 'cafe_norte.jpg', 150, (SELECT id_producer FROM producers WHERE name = 'Valle Blanco'), (SELECT id_coffee_type FROM coffee_types WHERE type_name = 'Blend'), 500, 'Rainforest Alliance');
 
 INSERT INTO orders (id_order, id_customer, total, status, shipping_address, shipping_method, tracking_number) VALUES
 (UUID(), (SELECT id_user FROM user WHERE email = 'juan.perez@example.com'), 47.50, 'pending', 'Av. Siempre Viva 123, Lima', 'standard', NULL);
 
 INSERT INTO order_details (id_detail, id_order, id_product, quantity, unit_price, subtotal) VALUES
-(UUID(), (SELECT id_order FROM orders LIMIT 1), (SELECT id_product FROM products WHERE name = 'Café Cusqueño'), 1, 25.00, 25.00),
-(UUID(), (SELECT id_order FROM orders LIMIT 1), (SELECT id_product FROM products WHERE name = 'Café Norteño'), 1, 22.50, 22.50);
+(UUID(), (SELECT id_order FROM orders LIMIT 1), (SELECT id_product FROM products WHERE name = 'La Inka Supremo'), 1, 25.00, 25.00),
+(UUID(), (SELECT id_order FROM orders LIMIT 1), (SELECT id_product FROM products WHERE name = 'Valle Blanco Orgánico'), 1, 22.50, 22.50);
 
 INSERT INTO payments (id_payment, id_order, amount, payment_method, status, transaction_id) VALUES
 (UUID(), (SELECT id_order FROM orders LIMIT 1), 47.50, 'card', 'completed', 'TXN123456');
