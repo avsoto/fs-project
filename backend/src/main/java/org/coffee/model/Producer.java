@@ -40,6 +40,6 @@ public class Producer {
     private LocalDateTime registrationDate;
 
     @ManyToOne
-    @JoinColumn(name = "location", referencedColumnName = "id_province", nullable = true)
-    private Province location;
+    @JoinColumn(name = "province", referencedColumnName = "id_province", nullable = true)
+    private Province province;
 }
