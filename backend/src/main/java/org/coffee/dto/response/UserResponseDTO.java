@@ -1,23 +1,22 @@
-package org.coffee.dto;
+package org.coffee.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.coffee.model.Province;
-
+import org.coffee.model.Role;
 import java.util.UUID;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDTO {
-    private UUID idProducer;
+public class UserResponseDTO {
+    private UUID idUser;
     private String name;
-    private String description;
-    private String image;
     private String email;
+    private Role role;
     private String phone;
-    private Province location;
+    private String address;
 }
+
