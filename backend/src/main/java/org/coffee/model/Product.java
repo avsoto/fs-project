@@ -34,14 +34,6 @@ public class Product {
     @Column(nullable = false)
     private int stock = 0;
 
-    @ManyToOne
-    @JoinColumn(name = "id_producer", referencedColumnName = "id_producer", foreignKey = @ForeignKey(name = "FK_product_producer"))
-    private Producer producer;
-
-    @ManyToOne
-    @JoinColumn(name = "id_coffee_type", referencedColumnName = "id_coffee_type", foreignKey = @ForeignKey(name = "FK_product_coffee_type"))
-    private CoffeeType coffeeType;
-
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal weight;
 
@@ -50,5 +42,13 @@ public class Product {
 
     @Column(name = "creation_date", nullable = false, updatable = false)
     private LocalDateTime creationDate;
+
+    @ManyToOne
+    @JoinColumn(name = "id_producer", referencedColumnName = "id_producer", foreignKey = @ForeignKey(name = "FK_product_producer"))
+    private Producer producer;
+
+    @ManyToOne
+    @JoinColumn(name = "id_coffee_type", referencedColumnName = "id_coffee_type", foreignKey = @ForeignKey(name = "FK_product_coffee_type"))
+    private CoffeeType coffeeType;
 
 }

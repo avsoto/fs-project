@@ -24,10 +24,6 @@ public class Producer {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "location", referencedColumnName = "id_province", nullable = true)
-    private Province location;
-
     @Column(columnDefinition = "TEXT")
     private String image;
 
@@ -43,4 +39,7 @@ public class Producer {
     @Column(name = "registration_date", nullable = false, updatable = false)
     private LocalDateTime registrationDate;
 
+    @ManyToOne
+    @JoinColumn(name = "location", referencedColumnName = "id_province", nullable = true)
+    private Province location;
 }
